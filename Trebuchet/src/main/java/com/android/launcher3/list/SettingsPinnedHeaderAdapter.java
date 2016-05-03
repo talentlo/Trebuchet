@@ -23,6 +23,7 @@ import com.android.launcher3.Utilities;
 import com.android.launcher3.settings.SettingsProvider;
 
 public class SettingsPinnedHeaderAdapter extends PinnedHeaderListAdapter {
+
     public static final String ACTION_SEARCH_BAR_VISIBILITY_CHANGED =
             "cyanogenmod.intent.action.SEARCH_BAR_VISIBILITY_CHANGED";
 
@@ -132,6 +133,9 @@ public class SettingsPinnedHeaderAdapter extends PinnedHeaderListAdapter {
                                 R.bool.preferences_interface_homescreen_remote_folder_default);
                         setSettingSwitch(stateView, settingSwitch, current);
                         break;
+                    case 6:
+                        updateWorkspaceAnimSettingsItem(stateView, settingSwitch);
+                        break;
                     default:
                         hideStates(stateView, settingSwitch);
                 }
@@ -223,6 +227,33 @@ public class SettingsPinnedHeaderAdapter extends PinnedHeaderListAdapter {
     }
 
     public void updateDynamicGridSizeSettingsItem(TextView stateView, Switch settingSwitch) {
+        InvariantDeviceProfile.GridSize gridSize = InvariantDeviceProfile.GridSize.getModeForValue(
+                SettingsProvider.getIntCustomDefault(mLauncher,
+                        SettingsProvider.SETTINGS_UI_DYNAMIC_GRID_SIZE, 0));
+        String state = "";
+
+        switch (gridSize) {
+            case Comfortable:
+                state = mLauncher.getResources().getString(R.string.grid_size_comfortable);
+                break;
+            case Cozy:
+                state = mLauncher.getResources().getString(R.string.grid_size_cozy);
+                break;
+            case Condensed:
+                state = mLauncher.getResources().getString(R.string.grid_size_condensed);
+                break;
+            case Custom:
+                int rows = SettingsProvider.getIntCustomDefault(mLauncher,
+                        SettingsProvider.SETTINGS_UI_HOMESCREEN_ROWS, 0);
+                int columns = SettingsProvider.getIntCustomDefault(mLauncher,
+                        SettingsProvider.SETTINGS_UI_HOMESCREEN_COLUMNS, 0);
+                state = rows + " " + "\u00d7" + " " + columns;
+                break;
+        }
+        setStateText(stateView, settingSwitch, state);
+    }
+
+    public void updateWorkspaceAnimSettingsItem(TextView stateView, Switch settingSwitch) {
         InvariantDeviceProfile.GridSize gridSize = InvariantDeviceProfile.GridSize.getModeForValue(
                 SettingsProvider.getIntCustomDefault(mLauncher,
                         SettingsProvider.SETTINGS_UI_DYNAMIC_GRID_SIZE, 0));

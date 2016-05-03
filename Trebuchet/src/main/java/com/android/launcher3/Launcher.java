@@ -609,9 +609,9 @@ public class Launcher extends Activity
         }
 
         IntentFilter protectedAppsFilter = new IntentFilter(
-                cyanogenmod.content.Intent.ACTION_PROTECTED_CHANGED);
+                com.android.launcher3.constants.Intent.ACTION_PROTECTED_CHANGED);
         registerReceiver(protectedAppsChangedReceiver, protectedAppsFilter,
-                cyanogenmod.platform.Manifest.permission.PROTECTED_APP, null);
+                com.android.launcher3.constants.Manifest.permission.PROTECTED_APP, null);
 
         IntentFilter searchBarVisibilityFilter = new IntentFilter(
                 SettingsPinnedHeaderAdapter.ACTION_SEARCH_BAR_VISIBILITY_CHANGED);

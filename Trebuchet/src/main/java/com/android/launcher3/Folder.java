@@ -72,9 +72,9 @@ import com.android.launcher3.settings.SettingsProvider;
 import com.android.launcher3.util.Thunk;
 import com.android.launcher3.util.UiThreadCircularReveal;
 
-import static cyanogenmod.content.Intent.ACTION_PROTECTED;
-import static cyanogenmod.content.Intent.EXTRA_PROTECTED_COMPONENTS;
-import static cyanogenmod.content.Intent.EXTRA_PROTECTED_STATE;
+import static com.android.launcher3.constants.Intent.ACTION_PROTECTED;
+import static com.android.launcher3.constants.Intent.EXTRA_PROTECTED_COMPONENTS;
+import static com.android.launcher3.constants.Intent.EXTRA_PROTECTED_STATE;
 
 import java.util.ArrayList;
 import java.util.Collections;

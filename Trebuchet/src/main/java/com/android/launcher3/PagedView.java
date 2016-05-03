@@ -48,6 +48,7 @@ import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.animation.Interpolator;
 
+import com.android.launcher3.effects.BaseEffectAnimation;
 import com.android.launcher3.util.LauncherEdgeEffect;
 import com.android.launcher3.util.Thunk;
 
@@ -93,7 +94,7 @@ public abstract class PagedView extends ViewGroup implements ViewGroup.OnHierarc
     protected int mMinFlingVelocity;
     protected int mMinSnapVelocity;
 
-    protected float mDensity;
+    public float mDensity;
     protected float mSmoothingTime;
     protected float mTouchX;
 
@@ -976,6 +977,14 @@ public abstract class PagedView extends ViewGroup implements ViewGroup.OnHierarc
      * Called when the center screen changes during scrolling.
      */
     protected void screenScrolled(int screenCenter) { }
+
+    public void setEffectAnimation(BaseEffectAnimation effectAnimation){
+
+    }
+
+    public boolean isLayoutRtl() {
+        return (getLayoutDirection() == LAYOUT_DIRECTION_RTL);
+    }
 
     @Override
     public void onChildViewAdded(View parent, View child) {

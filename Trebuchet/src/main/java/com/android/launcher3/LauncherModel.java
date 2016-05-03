@@ -81,8 +81,6 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import cyanogenmod.providers.CMSettings;
-
 /**
  * Maintains in-memory state of the Launcher. It is expected that there should be only one
  * LauncherModel object held in a static. Also provide APIs for updating the database state
@@ -2675,8 +2673,8 @@ public class LauncherModel extends BroadcastReceiver
             ArrayList<ComponentName> mHiddenApps = new ArrayList<ComponentName>();
             ArrayList<String> mHiddenAppsPackages = new ArrayList<String>();
             Context context = mApp.getContext();
-            String protectedComponents = CMSettings.Secure.getString(context.getContentResolver(),
-                    CMSettings.Secure.PROTECTED_COMPONENTS);
+            String protectedComponents = null;/*CMSettings.Secure.getString(context.getContentResolver(),
+                    CMSettings.Secure.PROTECTED_COMPONENTS);*/
             protectedComponents = protectedComponents == null ? "" : protectedComponents;
             String[] flattened = protectedComponents.split("\\|");
 

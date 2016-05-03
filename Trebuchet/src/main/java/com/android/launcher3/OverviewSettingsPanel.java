@@ -39,8 +39,8 @@ public class OverviewSettingsPanel {
                 res.getString(R.string.app_settings)};
 
         String[] valuesApp = new String[] {
-                res.getString(R.string.larger_icons_text),
-                res.getString(R.string.protected_app_settings)};
+                res.getString(R.string.larger_icons_text)/*,
+                res.getString(R.string.protected_app_settings)*/};
 
         mSettingsAdapter = new SettingsPinnedHeaderAdapter(mLauncher);
         mSettingsAdapter.setHeaders(headers);
@@ -73,7 +73,8 @@ public class OverviewSettingsPanel {
                 res.getString(R.string.icon_labels),
                 res.getString(R.string.scrolling_wallpaper),
                 res.getString(R.string.grid_size_text),
-                res.getString(R.string.allow_rotation_title)}));
+                res.getString(R.string.allow_rotation_title),
+                res.getString(R.string.workspace_anim)}));
 
         // Add additional external settings.
         RemoteFolderManager.onInitializeHomeSettings(values, mLauncher);

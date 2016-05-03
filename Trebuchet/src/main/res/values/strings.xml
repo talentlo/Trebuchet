@@ -296,4 +296,6 @@
     <string name="pick_wallpaper">Wallpapers</string>
     <!-- Title of activity for cropping wallpapers -->
     <string name="crop_wallpaper">Crop wallpaper</string>
+
+    <string name="workspace_anim">Workspace animation</string>
 </resources>

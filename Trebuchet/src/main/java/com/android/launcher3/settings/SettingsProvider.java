@@ -29,6 +29,7 @@ public final class SettingsProvider {
     public static final String SETTINGS_UI_HOMESCREEN_REMOTE_FOLDER = "ui_homescreen_remote_folder";
     public static final String SETTINGS_UI_DRAWER_REMOTE_APPS = "ui_drawer_remote_apps";
     public static final String SETTINGS_UI_DYNAMIC_GRID_SIZE = "ui_dynamic_grid_size";
+    public static final String SETTINGS_UI_WORKSPACE_ANIM = "ui_workspace_anim";
     public static final String SETTINGS_UI_HOMESCREEN_ROWS = "ui_homescreen_rows";
     public static final String SETTINGS_UI_HOMESCREEN_COLUMNS = "ui_homescreen_columns";
     public static final String SETTINGS_UI_DRAWER_HIDE_ICON_LABELS = "ui_drawer_hide_icon_labels";

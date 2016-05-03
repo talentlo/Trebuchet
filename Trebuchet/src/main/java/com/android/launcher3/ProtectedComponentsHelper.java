@@ -18,9 +18,9 @@ package com.android.launcher3;
 
 import android.content.ComponentName;
 import android.content.Context;
-import cyanogenmod.providers.CMSettings;
 
 import java.util.ArrayList;
+
 
 public class ProtectedComponentsHelper {
     private static final int FILTER_APPS_SYSTEM_FLAG = 1;
@@ -36,19 +36,24 @@ public class ProtectedComponentsHelper {
      * @param context Context
      */
     public static void updateProtectedComponentsLists(Context context) {
-        String protectedComponents = CMSettings.Secure.getString(context.getContentResolver(),
-                CMSettings.Secure.PROTECTED_COMPONENTS);
-        protectedComponents = protectedComponents == null ? "" : protectedComponents;
-        String [] flattened = protectedComponents.split("\\|");
-        sProtectedApps = new ArrayList<ComponentName>(flattened.length);
-        sProtectedPackages = new ArrayList<String>(flattened.length);
-        for (String flat : flattened) {
-            ComponentName cmp = ComponentName.unflattenFromString(flat);
-            if (cmp != null) {
-                sProtectedApps.add(cmp);
-                sProtectedPackages.add(cmp.getPackageName());
-            }
-        }
+          //remove CMSetting
+//        String protectedComponents = CMSettings.Secure.getString(context.getContentResolver(),
+//                    CMSettings.Secure.PROTECTED_COMPONENTS);
+//
+//        protectedComponents = protectedComponents == null ? "" : protectedComponents;
+//        String [] flattened = protectedComponents.split("\\|");
+//        sProtectedApps = new ArrayList<ComponentName>(flattened.length);
+//        sProtectedPackages = new ArrayList<String>(flattened.length);
+//        for (String flat : flattened) {
+//            ComponentName cmp = ComponentName.unflattenFromString(flat);
+//            if (cmp != null) {
+//                sProtectedApps.add(cmp);
+//                sProtectedPackages.add(cmp.getPackageName());
+//            }
+//        }
+
+        sProtectedApps = new ArrayList<ComponentName>();
+        sProtectedPackages = new ArrayList<String>();
     }
 
     /**
