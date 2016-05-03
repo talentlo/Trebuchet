@@ -20,7 +20,6 @@ import android.appwidget.AppWidgetHost;
 import android.appwidget.AppWidgetHostView;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.Context;
-import android.os.TransactionTooLargeException;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;

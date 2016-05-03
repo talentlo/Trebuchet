@@ -699,6 +699,7 @@ public class FolderIcon extends FrameLayout implements FolderListener {
         canvas.restore();
     }
 
+    @SuppressWarnings("SuspiciousMethodCalls")
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);

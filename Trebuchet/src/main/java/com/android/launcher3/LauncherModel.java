@@ -58,15 +58,13 @@ import com.android.launcher3.compat.UserHandleCompat;
 import com.android.launcher3.compat.UserManagerCompat;
 import com.android.launcher3.model.MigrateFromRestoreTask;
 import com.android.launcher3.model.WidgetsModel;
+import com.android.launcher3.settings.SettingsProvider;
+import com.android.launcher3.stats.internal.service.AggregationIntentService;
 import com.android.launcher3.util.ComponentKey;
 import com.android.launcher3.util.CursorIconInfo;
 import com.android.launcher3.util.LongArrayMap;
 import com.android.launcher3.util.ManagedProfileHeuristic;
 import com.android.launcher3.util.Thunk;
-import cyanogenmod.providers.CMSettings;
-
-import com.android.launcher3.settings.SettingsProvider;
-import com.android.launcher3.stats.internal.service.AggregationIntentService;
 
 import java.lang.ref.WeakReference;
 import java.net.URISyntaxException;
@@ -82,6 +80,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import cyanogenmod.providers.CMSettings;
 
 /**
  * Maintains in-memory state of the Launcher. It is expected that there should be only one
@@ -843,6 +843,7 @@ public class LauncherModel extends BroadcastReceiver
                     waiter.wait();
                     success = true;
                 } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }

@@ -31,4 +31,8 @@ dependencies {
     compile 'com.android.support:support-v4:'+ deps.androidSupport
     compile 'com.android.support:recyclerview-v7:' + deps.androidSupport
     testCompile 'junit:junit:4.12'
+
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
 }

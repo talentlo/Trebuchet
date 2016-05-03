@@ -444,7 +444,9 @@ public class WidgetPreviewLoader {
                             yoffset + (int) (appIconSize * iconScale));
                     icon.draw(c);
                 }
-            } catch (Resources.NotFoundException e) { }
+            } catch (Resources.NotFoundException e) {
+                e.printStackTrace();
+            }
             c.setBitmap(null);
         }
         int imageHeight = Math.min(preview.getHeight(), previewHeight + mProfileBadgeMargin);

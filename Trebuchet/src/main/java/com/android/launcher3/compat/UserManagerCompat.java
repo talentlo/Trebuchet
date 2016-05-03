@@ -18,7 +18,6 @@ package com.android.launcher3.compat;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 
 import com.android.launcher3.Utilities;
 

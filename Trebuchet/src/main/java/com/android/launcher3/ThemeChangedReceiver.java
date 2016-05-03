@@ -19,7 +19,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class ThemeChangedReceiver extends BroadcastReceiver {

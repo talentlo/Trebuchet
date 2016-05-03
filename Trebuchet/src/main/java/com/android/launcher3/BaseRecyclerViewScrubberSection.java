@@ -18,13 +18,9 @@ package com.android.launcher3;
 
 import android.text.TextUtils;
 import android.util.Log;
-import android.util.SparseArray;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashMap;
 
 public class BaseRecyclerViewScrubberSection {
     private static final String TAG = "BRVScrubberSections";

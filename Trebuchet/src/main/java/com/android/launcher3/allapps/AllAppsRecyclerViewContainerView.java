@@ -25,7 +25,6 @@ import com.android.launcher3.BubbleTextView.BubbleTextShadowHandler;
 import com.android.launcher3.ClickShadowView;
 import com.android.launcher3.DeviceProfile;
 import com.android.launcher3.Launcher;
-import com.android.launcher3.R;
 
 /**
  * A container for RecyclerView to allow for the click shadow view to be shown behind an icon that

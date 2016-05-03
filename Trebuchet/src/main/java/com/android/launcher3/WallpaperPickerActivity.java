@@ -16,7 +16,6 @@
 
 package com.android.launcher3;
 
-import android.Manifest.permission;
 import android.animation.LayoutTransition;
 import android.annotation.TargetApi;
 import android.app.ActionBar;
@@ -972,6 +971,7 @@ public class WallpaperPickerActivity extends WallpaperCropActivity {
                         .getResourcesForApplication(r.first);
                 addWallpapers(bundled, wallpaperRes, r.first.packageName, r.second);
             } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
             }
         }
 

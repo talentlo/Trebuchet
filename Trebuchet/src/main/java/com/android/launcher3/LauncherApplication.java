@@ -20,6 +20,7 @@ import android.app.Application;
 
 import com.android.launcher3.stats.LauncherStats;
 import com.android.launcher3.stats.internal.service.AggregationIntentService;
+import com.squareup.leakcanary.LeakCanary;
 
 public class LauncherApplication extends Application {
 
@@ -39,6 +40,7 @@ public class LauncherApplication extends Application {
         super.onCreate();
         sLauncherStats = LauncherStats.getInstance(this);
         AggregationIntentService.scheduleService(this);
+        LeakCanary.install(this);
     }
 
 }
