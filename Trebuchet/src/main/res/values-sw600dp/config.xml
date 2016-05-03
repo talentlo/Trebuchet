@@ -1,0 +1,6 @@
+<resources>
+    <bool name="is_tablet">true</bool>
+
+<!-- DragController -->
+    <integer name="config_flingToDeleteMinVelocity">-1000</integer>
+</resources>

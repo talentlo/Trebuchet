@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* //device/apps/common/assets/res/any/colors.xml
+**
+** Copyright 2008, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License"); 
+** you may not use this file except in compliance with the License. 
+** You may obtain a copy of the License at 
+**
+**     http://www.apache.org/licenses/LICENSE-2.0 
+**
+** Unless required by applicable law or agreed to in writing, software 
+** distributed under the License is distributed on an "AS IS" BASIS, 
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
+** See the License for the specific language governing permissions and 
+** limitations under the License.
+*/
+-->
+<resources>
+    <!-- The color tints to apply to the text and drag view when hovering
+         over the delete target or the info target -->
+    <color name="delete_target_hover_tint">#FFC1C1C1</color>
+    <color name="uninstall_target_hover_tint">#FFF0592B</color>
+    <color name="info_target_hover_tint">#FF009688</color>
+    <color name="cling_scrim_background">#80000000</color>
+
+    <color name="focused_background">#80c6c5c5</color>
+
+    <color name="workspace_icon_text_color">#FFF</color>
+
+    <color name="workspace_edge_effect_color">#FFFFFFFF</color>
+    <color name="folder_edge_effect_color">#FF757575</color>
+
+    <color name="quantum_panel_text_color">#FF666666</color>
+    <color name="quantum_panel_text_color_dark">#FFF</color>
+    <color name="quantum_panel_bg_color">#FFF5F5F5</color>
+    <color name="quantum_panel_bg_color_dark">#76000000</color>
+
+    <color name="outline_color">#FFFFFFFF</color>
+
+    <!-- Containers -->
+    <color name="container_fastscroll_thumb_inactive_color">#009688</color>
+    <color name="container_fastscroll_thumb_active_color">#009688</color>
+
+    <color name="settings_bg_header_color">#FFb2b0ab</color>
+    <color name="settings_bg_selected_color">#26000000</color>
+    <color name="settings_transition_selected_color">#50000000</color>
+
+    <!-- All Apps -->
+    <color name="all_apps_grid_section_text_color">#009688</color>
+    <color name="all_apps_grid_section_text_color_dark">#FFF</color>
+    <color name="all_apps_search_market_button_focused_bg_color">#DDDDDD</color>
+
+    <color name="drawer_divider_light">#14000000</color>
+    <color name="drawer_divider_dark">#14ffffff</color>
+
+    <!-- Widgets view -->
+    <color name="widgets_view_section_text_color">#FFFFFF</color>
+    <color name="widgets_view_item_text_color">#C4C4C4</color>
+    <color name="widgets_cell_color">#263238</color>
+
+    <!-- CM Settings -->
+    <color name="settings_bg_color">#424242</color>
+    <color name="settings_header_text">#00B1E5</color>
+
+    <color name="dynamic_grid_preview_background">#FFFFFFFF</color>
+    <color name="dynamic_grid_preview_foreground">#FF000000</color>
+
+    <color name="app_scrubber_highlight_color">@android:color/white</color>
+    <color name="app_scrubber_gray_color">@android:color/darker_gray</color>
+    <color name="scrubber_background">#CC14191E</color>
+    <color name="wallpaper_picker_translucent_gray">#66000000</color>
+
+    <color name="launcher_accent_color">#ff009688</color>
+</resources>
