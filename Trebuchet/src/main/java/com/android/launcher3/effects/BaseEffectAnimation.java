@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.android.launcher3.PagedView;
 import com.android.launcher3.R;
+import com.android.launcher3.util.LogUtil;
 
 /**
  * Created by lcg on 16-5-3.
@@ -23,12 +24,48 @@ public abstract class BaseEffectAnimation {
 
     public static void setEffectAnimation(PagedView mPagedView, Effect mEffect) {
         int effectType = mEffect.getEffectType();
-        BaseEffectAnimation animation = mEffect.getEffectAnimationForType(mPagedView, effectType);
+        BaseEffectAnimation animation = getEffectAnimationForType(mPagedView, effectType);
         mPagedView.setEffectAnimation(animation);
     }
 
     public abstract void screenScrolled(View v, float progress);
 
+    public static BaseEffectAnimation getEffectAnimationForType(PagedView mPagedView, int effectType) {
+        switch (effectType) {
+            case 0:
+                return null;
+            case 1:
+                return new Zoom(true, mPagedView);
+            case 2:
+                return new Zoom(false, mPagedView);
+            case 3:
+                return new Rotate(true, mPagedView);
+            case 4:
+                return new Rotate(false, mPagedView);
+            case 5:
+                return new Cube(true, mPagedView);
+            case 6:
+                return new Cube(false, mPagedView);
+            case 7:
+                return new Stack(mPagedView);
+            case 8:
+                return new Accordion(mPagedView);
+            case 9:
+                return new Flip(mPagedView);
+            case 10:
+                return new Cylinder(true, mPagedView);
+            case 11:
+                return new Cylinder(false, mPagedView);
+            case 12:
+                return new Carousel(mPagedView);
+            case 13:
+                return new Overview(mPagedView);
+            case 14:
+                return new Cross(mPagedView);
+            default:
+                return null;
+        }
+    }
 
     public enum Effect {
 
@@ -45,7 +82,8 @@ public abstract class BaseEffectAnimation {
         CYLINDER_IN(10),
         CYLINDER_OUT(11),
         CAROUSEL(12),
-        OVERVIEW(13);
+        OVERVIEW(13),
+        CROSS(14);
 
         private int effectType;
 
@@ -83,79 +121,27 @@ public abstract class BaseEffectAnimation {
                     return CAROUSEL;
                 case 13:
                     return OVERVIEW;
+                case 14:
+                    return CROSS;
                 default:
                     return NO_EFFECT;
             }
         }
 
         public static int getEffectPreviewResId(int effectType) {
-            switch (effectType) {
-                case 0:
-                    return R.drawable.effect_null;
-                case 1:
-                    return R.drawable.effect_zoom_in;
-                case 2:
-                    return R.drawable.effect_zoom_out;
-                case 3:
-                    return R.drawable.effect_rotate_up;
-                case 4:
-                    return R.drawable.effect_rotate_down;
-                case 5:
-                    return R.drawable.effect_cube_in;
-                case 6:
-                    return R.drawable.effect_cube_out;
-                case 7:
-                    return R.drawable.effect_stack;
-                case 8:
-                    return R.drawable.effect_acordian;
-                case 9:
-                    return R.drawable.effect_flip;
-                case 10:
-                    return R.drawable.effect_cylinder_in;
-                case 11:
-                    return R.drawable.effect_cylinder_out;
-                case 12:
-                    return R.drawable.effect_carousel;
-                case 13:
-                    return R.drawable.effect_overview;
-                default:
-                    return R.drawable.effect_null;
+            if (effectType<0 && effectType >= NAMES_RES_ID.length) {
+                effectType = 0;
+                LogUtil.w("The effectType is Illegal !");
             }
+            return PREVIEW_RES_ID[effectType];
         }
 
-        public static BaseEffectAnimation getEffectAnimationForType(PagedView mPagedView, int effectType) {
-            switch (effectType) {
-                case 0:
-                    return null;
-                case 1:
-                    return new Zoom(true, mPagedView);
-                case 2:
-                    return new Zoom(false, mPagedView);
-                case 3:
-                    return new Rotate(true, mPagedView);
-                case 4:
-                    return new Rotate(false, mPagedView);
-                case 5:
-                    return new Cube(true, mPagedView);
-                case 6:
-                    return new Cube(false, mPagedView);
-                case 7:
-                    return new Stack(mPagedView);
-                case 8:
-                    return new Accordion(mPagedView);
-                case 9:
-                    return new Flip(mPagedView);
-                case 10:
-                    return new Cylinder(true, mPagedView);
-                case 11:
-                    return new Cylinder(false, mPagedView);
-                case 12:
-                    return new Carousel(mPagedView);
-                case 13:
-                    return new Overview(mPagedView);
-                default:
-                    return null;
+        public static int getEffectStringResId(int effectType) {
+            if (effectType<0 && effectType >= NAMES_RES_ID.length) {
+                effectType = 0;
+                LogUtil.w("The effectType is Illegal !");
             }
+            return NAMES_RES_ID[effectType];
         }
 
         public int getEffectType() {
@@ -167,6 +153,40 @@ public abstract class BaseEffectAnimation {
             return String.valueOf(this.effectType);
         }
 
+        public static final int[] NAMES_RES_ID = {
+                R.string.effect_none,
+                R.string.effect_zoom_in,
+                R.string.effect_zoom_out,
+                R.string.effect_rotate_up,
+                R.string.effect_rotate_down,
+                R.string.effect_cube_in,
+                R.string.effect_cube_out,
+                R.string.effect_stack,
+                R.string.effect_accordion,
+                R.string.effect_flip,
+                R.string.effect_cylinder_in,
+                R.string.effect_cylinder_out,
+                R.string.effect_carousel,
+                R.string.effect_overview,
+                R.string.effect_cross
+        };
 
+        public static final int[] PREVIEW_RES_ID = {
+                R.drawable.effect_none,
+                R.drawable.effect_zoom_in,
+                R.drawable.effect_zoom_out,
+                R.drawable.effect_rotate_up,
+                R.drawable.effect_rotate_down,
+                R.drawable.effect_cube_in,
+                R.drawable.effect_cube_out,
+                R.drawable.effect_stack,
+                R.drawable.effect_accordion,
+                R.drawable.effect_flip,
+                R.drawable.effect_cylinder_in,
+                R.drawable.effect_cylinder_out,
+                R.drawable.effect_carousel,
+                R.drawable.effect_overview,
+                R.drawable.effect_cross
+        };
     }
 }

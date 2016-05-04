@@ -82,7 +82,7 @@
 
     <!-- Effect -->
     <string name="launcher_effect">Launcher effect</string>
-    <string name="effect_null">No animation</string>
+    <string name="effect_none">None</string>
     <string name="effect_zoom_in">Zoom in</string>
     <string name="effect_zoom_out">Zoom out</string>
     <string name="effect_rotate_up">Rotate up</string>
@@ -96,5 +96,6 @@
     <string name="effect_cylinder_out">Cylinder out</string>
     <string name="effect_carousel">Carousel</string>
     <string name="effect_overview">Overview</string>
+    <string name="effect_cross">Cross</string>
 
 </resources>

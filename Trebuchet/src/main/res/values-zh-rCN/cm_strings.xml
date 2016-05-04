@@ -67,18 +67,19 @@
 
   <!-- Effect -->
   <string name="launcher_effect">桌面动画</string>
-  <string name="effect_null">无</string>
+  <string name="effect_none">无</string>
   <string name="effect_zoom_in">放大</string>
   <string name="effect_zoom_out">缩小</string>
-  <string name="effect_rotate_up">向上旋转</string>
-  <string name="effect_rotate_down">向下旋转</string>
-  <string name="effect_cube_in">立方向内</string>
-  <string name="effect_cube_out">立方向外</string>
+  <string name="effect_rotate_up">上旋</string>
+  <string name="effect_rotate_down">下旋</string>
+  <string name="effect_cube_in">凹立方</string>
+  <string name="effect_cube_out">凸立方</string>
   <string name="effect_stack">堆叠</string>
   <string name="effect_accordion">折叠</string>
-  <string name="effect_flip">转动</string>
-  <string name="effect_cylinder_in">圆柱向内</string>
-  <string name="effect_cylinder_out">圆柱向外</string>
-  <string name="effect_carousel">旋转</string>
-  <string name="effect_overview">概览</string>
+  <string name="effect_flip">翻转</string>
+  <string name="effect_cylinder_in">凹棱柱</string>
+  <string name="effect_cylinder_out">凸棱柱</string>
+  <string name="effect_carousel">转轴</string>
+  <string name="effect_overview">缩放</string>
+  <string name="effect_cross">交叉</string>
 </resources>

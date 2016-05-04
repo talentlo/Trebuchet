@@ -56,7 +56,7 @@
         insettable:layout_ignoreInsets="true"
         android:layout_width="150dp"
         android:layout_height="130dp"
-        android:background="@drawable/effect_null"
+        android:background="@drawable/effect_none"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="@dimen/effect_padding"
         />

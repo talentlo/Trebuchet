@@ -88,23 +88,8 @@ public class EffectSettingFragment extends Fragment {
         updateEffectPreview(mCurrentEffect);
 
         mListView = (ListView) v.findViewById(R.id.effect_list);
-        int[] valueResIds = {
-                R.string.effect_null,
-                R.string.effect_zoom_in,
-                R.string.effect_zoom_out,
-                R.string.effect_rotate_up,
-                R.string.effect_rotate_down,
-                R.string.effect_cube_in,
-                R.string.effect_cube_out,
-                R.string.effect_stack,
-                R.string.effect_accordion,
-                R.string.effect_flip,
-                R.string.effect_cylinder_in,
-                R.string.effect_cylinder_out,
-                R.string.effect_carousel,
-                R.string.effect_overview,
-        };
-        mAdapter = new EffectListAdapter(getActivity(), valueResIds);
+
+        mAdapter = new EffectListAdapter(getActivity(), BaseEffectAnimation.Effect.NAMES_RES_ID);
         mListView.setAdapter(mAdapter);
         return v;
     }

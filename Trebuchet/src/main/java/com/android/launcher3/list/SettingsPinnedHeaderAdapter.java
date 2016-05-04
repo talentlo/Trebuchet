@@ -260,52 +260,8 @@ public class SettingsPinnedHeaderAdapter extends PinnedHeaderListAdapter {
         BaseEffectAnimation.Effect effect = BaseEffectAnimation.Effect.getEffectForType(
                 SettingsProvider.getIntCustomDefault(mLauncher,
                         SettingsProvider.SETTINGS_UI_WORKSPACE_EFFECT, 0));
-        String state = "";
+        String state = mLauncher.getResources().getString(BaseEffectAnimation.Effect.getEffectStringResId(effect.getEffectType()));
 
-        switch (effect) {
-            case NO_EFFECT:
-                state = mLauncher.getResources().getString(R.string.effect_null);
-                break;
-            case ZOOM_IN:
-                state = mLauncher.getResources().getString(R.string.effect_zoom_in);
-                break;
-            case ZOOM_OUT:
-                state = mLauncher.getResources().getString(R.string.effect_zoom_out);
-                break;
-            case ROTATE_UP:
-                state = mLauncher.getResources().getString(R.string.effect_rotate_up);
-                break;
-            case ROTATE_DOWN:
-                state = mLauncher.getResources().getString(R.string.effect_rotate_down);
-                break;
-            case CUBE_IN:
-                state = mLauncher.getResources().getString(R.string.effect_cube_in);
-                break;
-            case CUBE_OUT:
-                state = mLauncher.getResources().getString(R.string.effect_cube_out);
-                break;
-            case STACK:
-                state = mLauncher.getResources().getString(R.string.effect_stack);
-                break;
-            case ACCORDION:
-                state = mLauncher.getResources().getString(R.string.effect_accordion);
-                break;
-            case FLIP:
-                state = mLauncher.getResources().getString(R.string.effect_flip);
-                break;
-            case CYLINDER_IN:
-                state = mLauncher.getResources().getString(R.string.effect_cylinder_in);
-                break;
-            case CYLINDER_OUT:
-                state = mLauncher.getResources().getString(R.string.effect_cylinder_out);
-                break;
-            case CAROUSEL:
-                state = mLauncher.getResources().getString(R.string.effect_carousel);
-                break;
-            case OVERVIEW:
-                state = mLauncher.getResources().getString(R.string.effect_overview);
-                break;
-        }
         setStateText(stateView, settingSwitch, state);
     }
 
