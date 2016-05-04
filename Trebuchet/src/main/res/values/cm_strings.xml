@@ -79,4 +79,22 @@
 
     <!-- App not available toast text -->
     <string name="app_not_available">App not available</string>
+
+    <!-- Effect -->
+    <string name="launcher_effect">Launcher effect</string>
+    <string name="effect_null">No animation</string>
+    <string name="effect_zoom_in">Zoom in</string>
+    <string name="effect_zoom_out">Zoom out</string>
+    <string name="effect_rotate_up">Rotate up</string>
+    <string name="effect_rotate_down">Rotate down</string>
+    <string name="effect_cube_in">Cube in</string>
+    <string name="effect_cube_out">Cube out</string>
+    <string name="effect_stack">Stack</string>
+    <string name="effect_accordion">Accordion</string>
+    <string name="effect_flip">Flip</string>
+    <string name="effect_cylinder_in">Cylinder in</string>
+    <string name="effect_cylinder_out">Cylinder out</string>
+    <string name="effect_carousel">Carousel</string>
+    <string name="effect_overview">Overview</string>
+
 </resources>

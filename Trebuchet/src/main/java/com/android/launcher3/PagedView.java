@@ -207,6 +207,8 @@ public abstract class PagedView extends ViewGroup implements ViewGroup.OnHierarc
     private final LauncherEdgeEffect mEdgeGlowLeft = new LauncherEdgeEffect();
     private final LauncherEdgeEffect mEdgeGlowRight = new LauncherEdgeEffect();
 
+    protected BaseEffectAnimation mEffectAnimation;
+
     public interface PageSwitchListener {
         void onPageSwitch(View newPage, int newPageIndex);
     }
@@ -976,12 +978,43 @@ public abstract class PagedView extends ViewGroup implements ViewGroup.OnHierarc
     /**
      * Called when the center screen changes during scrolling.
      */
-    protected void screenScrolled(int screenCenter) { }
-
-    public void setEffectAnimation(BaseEffectAnimation effectAnimation){
+    protected void screenScrolled(int screenCenter) {
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            if (child != null) {
+                float scrollProgress = getScrollProgress(screenCenter, child, i);
+                if (mEffectAnimation != null) {
+                    mEffectAnimation.screenScrolled(child, scrollProgress);
+                }
+            }
+        }
 
     }
 
+    public void setEffectAnimation(BaseEffectAnimation effectAnimation) {
+        this.mEffectAnimation = effectAnimation;
+        // Reset scroll transforms to normal
+        for (int i = 0; i < getChildCount(); i++) {
+            View v = getPageAt(i);
+            if (v != null) {
+                v.setPivotX(v.getMeasuredWidth() * 0.5f);
+                v.setPivotY(v.getMeasuredHeight() * 0.5f);
+                v.setRotation(0);
+                v.setRotationX(0);
+                v.setRotationY(0);
+                v.setScaleX(1f);
+                v.setScaleY(1f);
+                v.setTranslationX(0f);
+                v.setTranslationY(0f);
+                v.setVisibility(VISIBLE);
+                v.setAlpha(1f);
+            }
+        }
+
+    }
+    /**
+     * Note: this is a reimplementation of View.isLayoutRtl() since that is currently hidden api.
+     */
     public boolean isLayoutRtl() {
         return (getLayoutDirection() == LAYOUT_DIRECTION_RTL);
     }

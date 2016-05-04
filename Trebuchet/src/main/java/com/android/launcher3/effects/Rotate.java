@@ -17,7 +17,7 @@ public class Rotate extends BaseEffectAnimation {
     }
 
     @Override
-    protected void screenScrolled(View v, float progress) {
+    public void screenScrolled(View v, float progress) {
         float rotation =
                 (rotateUp ? TRANSITION_SCREEN_ROTATION : -TRANSITION_SCREEN_ROTATION) * progress;
 

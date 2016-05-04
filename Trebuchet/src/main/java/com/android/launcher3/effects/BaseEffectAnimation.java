@@ -3,6 +3,7 @@ package com.android.launcher3.effects;
 import android.view.View;
 
 import com.android.launcher3.PagedView;
+import com.android.launcher3.R;
 
 /**
  * Created by lcg on 16-5-3.
@@ -26,7 +27,7 @@ public abstract class BaseEffectAnimation {
         mPagedView.setEffectAnimation(animation);
     }
 
-    protected abstract void screenScrolled(View v, float progress);
+    public abstract void screenScrolled(View v, float progress);
 
 
     public enum Effect {
@@ -36,8 +37,8 @@ public abstract class BaseEffectAnimation {
         ZOOM_OUT(2),
         ROTATE_UP(3),
         ROTATE_DOWN(4),
-        CUB_IN(5),
-        CUB_OUT(6),
+        CUBE_IN(5),
+        CUBE_OUT(6),
         STACK(7),
         ACCORDION(8),
         FLIP(9),
@@ -65,9 +66,9 @@ public abstract class BaseEffectAnimation {
                 case 4:
                     return ROTATE_DOWN;
                 case 5:
-                    return CUB_IN;
+                    return CUBE_IN;
                 case 6:
-                    return CUB_OUT;
+                    return CUBE_OUT;
                 case 7:
                     return STACK;
                 case 8:
@@ -87,6 +88,41 @@ public abstract class BaseEffectAnimation {
             }
         }
 
+        public static int getEffectPreviewResId(int effectType) {
+            switch (effectType) {
+                case 0:
+                    return R.drawable.effect_null;
+                case 1:
+                    return R.drawable.effect_zoom_in;
+                case 2:
+                    return R.drawable.effect_zoom_out;
+                case 3:
+                    return R.drawable.effect_rotate_up;
+                case 4:
+                    return R.drawable.effect_rotate_down;
+                case 5:
+                    return R.drawable.effect_cube_in;
+                case 6:
+                    return R.drawable.effect_cube_out;
+                case 7:
+                    return R.drawable.effect_stack;
+                case 8:
+                    return R.drawable.effect_acordian;
+                case 9:
+                    return R.drawable.effect_flip;
+                case 10:
+                    return R.drawable.effect_cylinder_in;
+                case 11:
+                    return R.drawable.effect_cylinder_out;
+                case 12:
+                    return R.drawable.effect_carousel;
+                case 13:
+                    return R.drawable.effect_overview;
+                default:
+                    return R.drawable.effect_null;
+            }
+        }
+
         public static BaseEffectAnimation getEffectAnimationForType(PagedView mPagedView, int effectType) {
             switch (effectType) {
                 case 0:
@@ -100,9 +136,9 @@ public abstract class BaseEffectAnimation {
                 case 4:
                     return new Rotate(false, mPagedView);
                 case 5:
-                    return new Cub(true, mPagedView);
+                    return new Cube(true, mPagedView);
                 case 6:
-                    return new Cub(false, mPagedView);
+                    return new Cube(false, mPagedView);
                 case 7:
                     return new Stack(mPagedView);
                 case 8:
@@ -130,5 +166,7 @@ public abstract class BaseEffectAnimation {
         public String toString() {
             return String.valueOf(this.effectType);
         }
+
+
     }
 }

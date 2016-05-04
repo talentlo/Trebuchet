@@ -69,6 +69,7 @@ import com.android.launcher3.accessibility.LauncherAccessibilityDelegate;
 import com.android.launcher3.accessibility.LauncherAccessibilityDelegate.AccessibilityDragSource;
 import com.android.launcher3.accessibility.OverviewScreenAccessibilityDelegate;
 import com.android.launcher3.compat.UserHandleCompat;
+import com.android.launcher3.effects.BaseEffectAnimation;
 import com.android.launcher3.settings.SettingsProvider;
 import com.android.launcher3.util.LongArrayMap;
 import com.android.launcher3.util.Thunk;
@@ -471,6 +472,10 @@ public class Workspace extends PagedView
         setWallpaperDimension();
 
         setEdgeGlowColor(getResources().getColor(R.color.workspace_edge_effect_color));
+        int currentEffectType = SettingsProvider.getIntCustomDefault(mLauncher,
+                SettingsProvider.SETTINGS_UI_WORKSPACE_EFFECT, 0);
+        BaseEffectAnimation.setEffectAnimation(this, BaseEffectAnimation.Effect.getEffectForType(currentEffectType));
+
     }
 
     private void setupLayoutTransition() {
@@ -1707,6 +1712,7 @@ public class Workspace extends PagedView
 
     @Override
     protected void screenScrolled(int screenCenter) {
+        super.screenScrolled(screenCenter);
         updatePageAlphaValues(screenCenter);
         updateStateForCustomContent(screenCenter);
         enableHwLayersOnVisiblePages();

@@ -14,12 +14,14 @@ import android.view.ViewGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.android.launcher3.InvariantDeviceProfile;
 import com.android.launcher3.Launcher;
 import com.android.launcher3.LauncherSettings;
 import com.android.launcher3.OverviewSettingsPanel;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
+import com.android.launcher3.effects.BaseEffectAnimation;
 import com.android.launcher3.settings.SettingsProvider;
 
 public class SettingsPinnedHeaderAdapter extends PinnedHeaderListAdapter {
@@ -254,27 +256,54 @@ public class SettingsPinnedHeaderAdapter extends PinnedHeaderListAdapter {
     }
 
     public void updateWorkspaceAnimSettingsItem(TextView stateView, Switch settingSwitch) {
-        InvariantDeviceProfile.GridSize gridSize = InvariantDeviceProfile.GridSize.getModeForValue(
+
+        BaseEffectAnimation.Effect effect = BaseEffectAnimation.Effect.getEffectForType(
                 SettingsProvider.getIntCustomDefault(mLauncher,
-                        SettingsProvider.SETTINGS_UI_DYNAMIC_GRID_SIZE, 0));
+                        SettingsProvider.SETTINGS_UI_WORKSPACE_EFFECT, 0));
         String state = "";
 
-        switch (gridSize) {
-            case Comfortable:
-                state = mLauncher.getResources().getString(R.string.grid_size_comfortable);
+        switch (effect) {
+            case NO_EFFECT:
+                state = mLauncher.getResources().getString(R.string.effect_null);
                 break;
-            case Cozy:
-                state = mLauncher.getResources().getString(R.string.grid_size_cozy);
+            case ZOOM_IN:
+                state = mLauncher.getResources().getString(R.string.effect_zoom_in);
                 break;
-            case Condensed:
-                state = mLauncher.getResources().getString(R.string.grid_size_condensed);
+            case ZOOM_OUT:
+                state = mLauncher.getResources().getString(R.string.effect_zoom_out);
                 break;
-            case Custom:
-                int rows = SettingsProvider.getIntCustomDefault(mLauncher,
-                        SettingsProvider.SETTINGS_UI_HOMESCREEN_ROWS, 0);
-                int columns = SettingsProvider.getIntCustomDefault(mLauncher,
-                        SettingsProvider.SETTINGS_UI_HOMESCREEN_COLUMNS, 0);
-                state = rows + " " + "\u00d7" + " " + columns;
+            case ROTATE_UP:
+                state = mLauncher.getResources().getString(R.string.effect_rotate_up);
+                break;
+            case ROTATE_DOWN:
+                state = mLauncher.getResources().getString(R.string.effect_rotate_down);
+                break;
+            case CUBE_IN:
+                state = mLauncher.getResources().getString(R.string.effect_cube_in);
+                break;
+            case CUBE_OUT:
+                state = mLauncher.getResources().getString(R.string.effect_cube_out);
+                break;
+            case STACK:
+                state = mLauncher.getResources().getString(R.string.effect_stack);
+                break;
+            case ACCORDION:
+                state = mLauncher.getResources().getString(R.string.effect_accordion);
+                break;
+            case FLIP:
+                state = mLauncher.getResources().getString(R.string.effect_flip);
+                break;
+            case CYLINDER_IN:
+                state = mLauncher.getResources().getString(R.string.effect_cylinder_in);
+                break;
+            case CYLINDER_OUT:
+                state = mLauncher.getResources().getString(R.string.effect_cylinder_out);
+                break;
+            case CAROUSEL:
+                state = mLauncher.getResources().getString(R.string.effect_carousel);
+                break;
+            case OVERVIEW:
+                state = mLauncher.getResources().getString(R.string.effect_overview);
                 break;
         }
         setStateText(stateView, settingSwitch, state);
@@ -332,6 +361,9 @@ public class SettingsPinnedHeaderAdapter extends PinnedHeaderListAdapter {
                                     R.bool.preferences_interface_homescreen_remote_folder_default,
                                     false);
                             mLauncher.getRemoteFolderManager().onSettingChanged();
+                            break;
+                        case 6:
+                            mLauncher.onClickEffectSettingButton();
                             break;
                     }
                     break;

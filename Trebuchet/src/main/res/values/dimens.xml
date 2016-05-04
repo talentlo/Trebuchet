@@ -175,5 +175,7 @@
     <dimen name="wallpaperThumbnailWidth">106.5dp</dimen>
     <dimen name="wallpaperThumbnailHeight">94.5dp</dimen>
     <dimen name="wallpaperItemIconSize">32dp</dimen>
-    
+
+    <dimen name="effect_padding">15dp</dimen>
+
 </resources>

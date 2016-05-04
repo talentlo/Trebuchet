@@ -16,7 +16,7 @@ public class Cylinder extends BaseEffectAnimation {
     }
 
     @Override
-    protected void screenScrolled(View v, float progress) {
+    public void screenScrolled(View v, float progress) {
         float rotation =
                 (cylinderIn ? TRANSITION_SCREEN_ROTATION : -TRANSITION_SCREEN_ROTATION) * progress;
 

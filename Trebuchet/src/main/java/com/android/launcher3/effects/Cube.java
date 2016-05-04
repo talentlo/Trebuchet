@@ -7,17 +7,17 @@ import com.android.launcher3.PagedView;
 /**
  * Created by lcg on 16-5-3.
  */
-public class Cub extends BaseEffectAnimation {
+public class Cube extends BaseEffectAnimation {
 
     private boolean cubIn;
 
-    public Cub(boolean cubIn, PagedView mPagedView) {
-        super(cubIn ? Effect.CUB_IN : Effect.CUB_OUT, mPagedView);
+    public Cube(boolean cubIn, PagedView mPagedView) {
+        super(cubIn ? Effect.CUBE_IN : Effect.CUBE_OUT, mPagedView);
         this.cubIn = cubIn;
     }
 
     @Override
-    protected void screenScrolled(View v, float progress) {
+    public void screenScrolled(View v, float progress) {
         float rotation = (cubIn ? 90.0f : -90.0f) * progress;
 
         if (cubIn) {

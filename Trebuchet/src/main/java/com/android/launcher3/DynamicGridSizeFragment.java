@@ -183,12 +183,18 @@ public class DynamicGridSizeFragment extends Fragment
     }
 
     private void setSelected(View v) {
+        if(v==null){
+            return;
+        }
         v.setBackgroundColor(Color.WHITE);
         TextView t = (TextView) v.findViewById(R.id.item_name);
         t.setTextColor(getResources().getColor(R.color.settings_bg_color));
     }
 
     private void setCleared(View v) {
+        if(v == null){
+            return;
+        }
         v.setBackgroundColor(getResources().getColor(R.color.settings_bg_color));
         TextView t = (TextView) v.findViewById(R.id.item_name);
         t.setTextColor(Color.WHITE);
@@ -306,11 +312,11 @@ public class DynamicGridSizeFragment extends Fragment
 
             // Set selected state
             if (position == mCurrentSize.getValue()) {
-                if (mCurrentSelection != null) {
-                    setCleared(mCurrentSelection);
-                }
+                setCleared(mCurrentSelection);
                 mCurrentSelection = convertView;
                 setSelected(mCurrentSelection);
+            }else{
+                setCleared(convertView);
             }
 
             if (position == InvariantDeviceProfile.GridSize.Custom.getValue()) {

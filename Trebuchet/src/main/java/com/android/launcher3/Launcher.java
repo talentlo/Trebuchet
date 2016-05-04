@@ -108,6 +108,7 @@ import com.android.launcher3.compat.LauncherActivityInfoCompat;
 import com.android.launcher3.compat.LauncherAppsCompat;
 import com.android.launcher3.compat.UserHandleCompat;
 import com.android.launcher3.compat.UserManagerCompat;
+import com.android.launcher3.effects.BaseEffectAnimation;
 import com.android.launcher3.list.SettingsPinnedHeaderAdapter;
 import com.android.launcher3.model.WidgetsModel;
 import com.android.launcher3.settings.SettingsProvider;
@@ -268,6 +269,7 @@ public class Launcher extends Activity
     private DragController mDragController;
     private View mWeightWatcher;
     private DynamicGridSizeFragment mDynamicGridSizeFragment;
+    private EffectSettingFragment mEffectSettingFragment;
 
     protected static RemoteFolderManager sRemoteFolderManager;
 
@@ -1218,6 +1220,14 @@ public class Launcher extends Activity
             mDynamicGridSizeFragment.setSize();
             unlockScreenOrientation(true);
         }
+
+        Fragment effectFragment = getFragmentManager().findFragmentByTag(
+                EffectSettingFragment.EFFECT_SETTING_FRAGMENT);
+        if (effectFragment != null) {
+            mEffectSettingFragment.setEffect();
+            unlockScreenOrientation(true);
+        }
+
     }
 
     @Override
@@ -1923,6 +1933,20 @@ public class Launcher extends Activity
     }
 
     /**
+     * Replaces currently added fragments in the launcher layout with a
+     * {@link EffectSettingFragment}.
+     */
+    public void onClickEffectSettingButton() {
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        lockScreenOrientation();
+        mEffectSettingFragment = new EffectSettingFragment();
+        fragmentTransaction.replace(R.id.launcher, mEffectSettingFragment,
+                EffectSettingFragment.EFFECT_SETTING_FRAGMENT);
+        fragmentTransaction.commit();
+    }
+
+    /**
      * If the new grid size is different from the current grid size, the launcher will be reloaded
      * and the overview settings panel updated with the new grid size value.
      * @param size The new grid size to set the workspace to.
@@ -1971,6 +1995,35 @@ public class Launcher extends Activity
         anim.start();
         anim.addListener(mAnimatorListener);
     }
+
+
+    public void setLauncherEffect(BaseEffectAnimation.Effect effect) {
+        int lastEffectType = SettingsProvider.getIntCustomDefault(this,
+                SettingsProvider.SETTINGS_UI_WORKSPACE_EFFECT, 0);
+
+        if (lastEffectType != effect.getEffectType()) {
+            SettingsProvider.putInt(this,
+                    SettingsProvider.SETTINGS_UI_WORKSPACE_EFFECT, effect.getEffectType());
+            BaseEffectAnimation.setEffectAnimation(mWorkspace,effect);
+        }
+
+        mOverviewSettingsPanel.notifyDataSetInvalidated();
+
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        Configuration config = getResources().getConfiguration();
+        if(config.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+            fragmentTransaction.setCustomAnimations(0, R.anim.exit_out_left);
+        } else {
+            fragmentTransaction.setCustomAnimations(0, R.anim.exit_out_right);
+        }
+        fragmentTransaction.remove(mEffectSettingFragment).commit();
+        unlockScreenOrientation(true);
+        mDarkPanel.setVisibility(View.VISIBLE);
+        ObjectAnimator anim = ObjectAnimator.ofFloat(mDarkPanel, "alpha", 0.3f, 0.0f);
+        anim.start();
+        anim.addListener(mAnimatorListener);
+    }
+
 
     @Override
     public void onAttachedToWindow() {
@@ -2816,6 +2869,13 @@ public class Launcher extends Activity
                     DynamicGridSizeFragment.DYNAMIC_GRID_SIZE_FRAGMENT);
             if (gridFragment != null) {
                 mDynamicGridSizeFragment.setSize();
+                unlockScreenOrientation(true);
+            }
+
+            Fragment effectFragment = getFragmentManager().findFragmentByTag(
+                    EffectSettingFragment.EFFECT_SETTING_FRAGMENT);
+            if (effectFragment != null) {
+                mEffectSettingFragment.setEffect();
                 unlockScreenOrientation(true);
             }
             else {
